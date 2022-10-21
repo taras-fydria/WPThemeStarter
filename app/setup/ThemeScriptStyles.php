@@ -1,10 +1,11 @@
 <?php
 
-namespace SleepyOwl\Includes;
+namespace App\Setup;
 
-use SleepyOwl\Includes\Setup\Singleton;
 
-class AddAssets extends Singleton {
+use App\Base\Singleton;
+
+class ThemeScriptStyles extends Singleton {
 	protected function __construct() {
 		echo 'scripts';
 		parent::__construct();

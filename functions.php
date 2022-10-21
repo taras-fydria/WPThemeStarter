@@ -1,9 +1,14 @@
 <?php
 
-namespace SleepyOwl;
+use App\App;
 
-use SleepyOwl\Includes\AddAssets;
-
+/**
+ * Classes autoloader. For current work folder structure should be same as namespaces. for example
+ *
+ * @param $class_name
+ *
+ * @return void
+ */
 function my_custom_autoloader( $class_name ): void {
 
 	$class_name = str_replace( __NAMESPACE__, '', $class_name );
@@ -27,6 +32,9 @@ function my_custom_autoloader( $class_name ): void {
 }
 
 // add a new autoloader by passing a callable into spl_autoload_register()
-spl_autoload_register( 'SleepyOwl\my_custom_autoloader' );
+spl_autoload_register( 'my_custom_autoloader' );
 
-AddAssets::get_instance();
+
+App::get_instance();
+
+

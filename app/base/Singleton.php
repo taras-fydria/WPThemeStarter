@@ -1,6 +1,6 @@
 <?php
 
-namespace SleepyOwl\Includes\Setup;
+namespace App\Base;
 
 abstract class Singleton {
 	protected function __construct() {
@@ -11,8 +11,8 @@ abstract class Singleton {
 
 	public static function get_instance(): Singleton {
 		$class = static::class;
-		if ( !self::$_instance[ $class ] ) {
-			self::$_instance[$class] = new static();
+		if ( ! self::$_instance[ $class ] ) {
+			self::$_instance[ $class ] = new static();
 		}
 
 		return self::$_instance[ $class ];
