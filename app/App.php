@@ -1,10 +1,12 @@
 <?php
 
-namespace App;
+namespace SleepyOwl\App;
 
 use App\Base\Singleton;
+use App\Functions\ThemeImages;
 use App\Setup\CustomFormats;
 use App\Setup\ThemeScriptStyles;
+use App\Setup\ThemeSetup;
 
 class App extends Singleton {
 	protected function __construct() {
@@ -18,5 +20,15 @@ class App extends Singleton {
 		 * Customize TinyMCE formats
 		 */
 		CustomFormats::get_instance();
+
+		/**
+		 * Theme Image Support
+		 */
+		ThemeImages::get_instance();
+
+		/**
+		 * Add Theme setup
+		 */
+		ThemeSetup::get_instance();
 	}
 }

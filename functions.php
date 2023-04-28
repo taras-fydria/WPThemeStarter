@@ -1,6 +1,9 @@
 <?php
 
-use App\App;
+namespace SleepyOwl;
+
+use SleepyOwl\App\App;
+use function SleepyOwl\App\TestScripts\test;
 
 /**
  * Classes autoloader. For current work folder structure should be same as namespaces. for example
@@ -9,7 +12,8 @@ use App\App;
  *
  * @return void
  */
-function my_custom_autoloader( $class_name ): void {
+function my_custom_autoloader($class_name): void
+{
 
 	$class_name = str_replace( __NAMESPACE__, '', $class_name );
 	$class_name = ltrim( $class_name, '\\' );
@@ -24,17 +28,18 @@ function my_custom_autoloader( $class_name ): void {
 		}
 	}
 	$class_name = implode( DIRECTORY_SEPARATOR, $path );
-	$file       = __DIR__ . DIRECTORY_SEPARATOR . $class_name;
-
+    $file       = __DIR__ . DIRECTORY_SEPARATOR . $class_name;
+    var_dump($file);
 	if ( file_exists( $file ) ) {
 		require_once $file;
 	}
 }
 
 // add a new autoloader by passing a callable into spl_autoload_register()
-spl_autoload_register( 'my_custom_autoloader' );
+spl_autoload_register('SleepyOwl\my_custom_autoloader');
 
-
+/**
+ * Start theme functions
+ */
 App::get_instance();
-
-
+test();
