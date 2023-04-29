@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Base;
+namespace App\base;
 
 abstract class Singleton {
 	protected function __construct() {

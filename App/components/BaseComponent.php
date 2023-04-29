@@ -1,7 +1,6 @@
 <?php
 
-
-namespace SleepyOwl\App\Components;
+namespace SleepyOwl\App\components;
 
 class BaseComponent {
 	const FILE_FOLDER = 'components';

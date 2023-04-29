@@ -1,7 +1,8 @@
 <?php
 
-use App\Functions\ThemeImages;
-use SleepyOwl\App\Components\BaseComponent;
+
+use App\functions\ThemeImages;
+use SleepyOwl\App\components\BaseComponent;
 
 get_header(); ?>
     <main class="main">

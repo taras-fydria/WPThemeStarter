@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Setup;
+namespace App;
 
 use App\Base\Singleton;
 

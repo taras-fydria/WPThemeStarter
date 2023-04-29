@@ -1,8 +1,7 @@
 <?php
+namespace App\functions;
 
-namespace App\Functions;
-
-use App\Base\Singleton;
+use App\base\Singleton;
 
 class ThemeImages extends Singleton {
 	/**

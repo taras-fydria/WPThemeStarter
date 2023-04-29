@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Functions;
+namespace SleepyOwl\App\functions;
 
 class Helpers {
 
@@ -52,7 +52,7 @@ class Helpers {
 	 *
 	 * @return array|string|string[]|null
 	 */
-	function sanitize_number( $string ) {
+	static function sanitize_number( $string ) {
 		return preg_replace( '/[^+\d]+/', '', $string );
 	}
 }
