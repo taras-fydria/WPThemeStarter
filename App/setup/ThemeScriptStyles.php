@@ -16,8 +16,8 @@ class ThemeScriptStyles extends Singleton
 
     public function enqueue_scripts(): void
     {
-        wp_enqueue_style('app', get_stylesheet_directory_uri() . '/dist/app.css', null, '1.0.0');
-        wp_enqueue_script('app', get_stylesheet_directory_uri() . '/dist/app.js', null, '1.0.0', true);
+        wp_enqueue_style('main', get_stylesheet_directory_uri() . '/dist/main.css', null, '1.0.0');
+        wp_enqueue_script('main', get_stylesheet_directory_uri() . '/dist/main.js', null, '1.0.0', true);
     }
 
     public function admin_enqueue_scripts(): void

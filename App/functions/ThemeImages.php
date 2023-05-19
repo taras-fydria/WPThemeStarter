@@ -105,4 +105,23 @@ class ThemeImages extends Singleton
     {
         echo self::get_responsive_image($attachment_id, $image_size, $attributes);
     }
+
+    static function show_custom_logo(string $size = 'medium')
+    {
+        if ($custom_logo_id = get_theme_mod('custom_logo')) {
+            $logo_image = wp_get_attachment_image($custom_logo_id, $size, false, array(
+                'class' => 'custom-logo',
+                'itemprop' => 'siteLogo',
+                'alt' => get_bloginfo('name'),
+            ));
+        } else {
+            $logo_url = get_stylesheet_directory_uri() . '/assets/images/custom-logo.png';
+            $w = 200;
+            $h = 160;
+            $logo_image = '<img src="' . $logo_url . '" width="' . $w . '" height="' . $h . '" class="custom-logo" itemprop="siteLogo" alt="' . get_bloginfo('name') . '">';
+        }
+
+        $html = sprintf('<a href="%1$s" class="custom-logo-link" rel="home" title="%2$s" itemscope>%3$s</a>', esc_url(home_url('/')), get_bloginfo('name'), $logo_image);
+        echo apply_filters('get_custom_logo', $html);
+    }
 }

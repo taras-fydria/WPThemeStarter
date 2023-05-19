@@ -59,4 +59,34 @@ class Helpers
     {
         return preg_replace('/[^+\d]+/', '', $string);
     }
+
+    // Create pagination
+    static function foundation_pagination($query = '', bool $echo = true)
+    {
+        if (empty($query)) {
+            global $wp_query;
+            $query = $wp_query;
+        }
+
+        $big = 999999999;
+
+        $links = paginate_links(array(
+            'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
+            'format' => '?paged=%#%',
+            'prev_next' => true,
+            'prev_text' => '&laquo;',
+            'next_text' => '&raquo;',
+            'current' => max(1, $query->query_vars['paged']),
+            'total' => $query->max_num_pages,
+            'type' => 'list',
+        ));
+
+        $pagination = str_replace('page-numbers', 'pagination', $links);
+
+        if ($echo) {
+            echo $pagination;
+        } else {
+            return $pagination;
+        }
+    }
 }

@@ -1,15 +1,15 @@
 <?php
 /**
- * Index
+ * Home
  *
- * Standard loop for the front-page
+ * Standard loop for the blog-page
  */
 get_header(); ?>
 	<main class="main-content">
 		<div class="grid-container">
 			<div class="grid-x grid-margin-x posts-list">
-				<!-- BEGIN of main content -->
-				<div class="large-8 medium-8 small-12 cell">
+				<!-- BEGIN of Blog posts -->
+				<div class="large-12 medium-8 small-12 cell">
 					
 					<?php if ( have_posts() ) : ?>
 						<?php while ( have_posts() ) : the_post(); ?>
@@ -17,11 +17,11 @@ get_header(); ?>
 						<?php endwhile; ?>
 					<?php endif; ?>
 					<!-- BEGIN of pagination -->
-					<?php foundation_pagination(); ?>
+					<?php \SleepyOwl\App\functions\Helpers::foundation_pagination() ?>
 					<!-- END of pagination -->
-				
+					
 				</div>
-				<!-- END of main content -->
+				<!-- END of Blog posts -->
 				
 				<!-- BEGIN of sidebar -->
 				<div class="large-4 medium-4 small-12 cell sidebar">
