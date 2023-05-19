@@ -15,8 +15,8 @@ use SleepyOwl\App\functions\Helpers;
 function my_custom_autoloader($class_name): void
 {
     $class_name = trim($class_name, '');
-    $class_name              = str_replace(__NAMESPACE__, '', $class_name);
-    $class_name              = ltrim($class_name, '\\');
+    $class_name = str_replace(__NAMESPACE__, '', $class_name);
+    $class_name = ltrim($class_name, '\\');
     $last_delimiter_position = strrpos($class_name, '\\');
     if ($last_delimiter_position) {
         $file_name = substr($class_name, $last_delimiter_position + 1);
@@ -24,8 +24,8 @@ function my_custom_autoloader($class_name): void
         $file_name = $class_name;
     }
     $file_name = sprintf('%s.php', $file_name);
-    $path      = substr($class_name, $last_delimiter_position);
-    $path      = explode('\\', $class_name);
+    $path = substr($class_name, $last_delimiter_position);
+    $path = explode('\\', $class_name);
     foreach ($path as $key => $path_item) {
         if ($key + 1 < count($path)) {
             $path[$key] = $path_item;

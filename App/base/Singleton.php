@@ -2,19 +2,22 @@
 
 namespace App\base;
 
-abstract class Singleton {
-	protected function __construct() {
+abstract class Singleton
+{
+    protected function __construct()
+    {
 
-	}
+    }
 
-	protected static array $_instance = [];
+    protected static array $_instance = [];
 
-	public static function get_instance(): Singleton {
-		$class = static::class;
-		if ( ! self::$_instance[ $class ] ) {
-			self::$_instance[ $class ] = new static();
-		}
+    public static function get_instance(): Singleton
+    {
+        $class = static::class;
+        if (!self::$_instance[$class]) {
+            self::$_instance[$class] = new static();
+        }
 
-		return self::$_instance[ $class ];
-	}
+        return self::$_instance[$class];
+    }
 }

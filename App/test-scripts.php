@@ -1,6 +1,8 @@
 <?php
+
 namespace SleepyOwl\App\TestScripts;
 
-function test(){
+function test()
+{
     echo 123;
 }
