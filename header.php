@@ -23,7 +23,7 @@
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class('no-outline'); ?>>
+<body <?php body_class('no-outline body'); ?>>
 <?php wp_body_open(); ?>
 
 <!-- BEGIN of header -->

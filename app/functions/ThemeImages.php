@@ -50,7 +50,44 @@ class ThemeImages extends Singleton
     {
         parent::__construct();
         $this->add_custom_image_sizes();
+        add_filter('upload_mimes', [$this, 'support_for_upload_svg_files']);
+        add_filter('wp_check_filetype_and_ext', [$this, 'svgs_upload_check'], 10, 4);
+        add_filter( 'big_image_size_threshold', '__return_false' );
     }
+
+    public function support_for_upload_svg_files(array $mimes = []): array
+    {
+        // allow SVG file upload
+        $mimes['svg'] = 'image/svg+xml';
+        $mimes['svgz'] = 'image/svg+xml';
+
+        return $mimes;
+    }
+
+    /**
+     * Check Mime Types
+     */
+    public function svgs_upload_check(array $checked, string $file, string $filename, array $mimes)
+    {
+
+        if (!$checked['type']) {
+
+            $check_filetype = wp_check_filetype($filename, $mimes);
+            $ext = $check_filetype['ext'];
+            $type = $check_filetype['type'];
+            $proper_filename = $filename;
+
+            if ($type && 0 === strpos($type, 'image/') && $ext !== 'svg') {
+                $ext = $type = false;
+            }
+
+            $checked = compact('ext', 'type', 'proper_filename');
+        }
+
+        return $checked;
+
+    }
+
 
     protected function add_custom_image_sizes()
     {

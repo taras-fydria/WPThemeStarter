@@ -11,6 +11,9 @@ class ThemeSetup extends Singleton
         parent::__construct();
 
         $this->support();
+
+        add_action('acf/init', [self::class, 'my_acf_op_init']);
+
     }
 
     protected function support()
@@ -45,5 +48,22 @@ class ThemeSetup extends Singleton
             'flex-height' => true,
             'flex-width' => true,
         ));
+    }
+
+    static function my_acf_op_init(): void
+    {
+
+        // Check function exists.
+        if (function_exists('acf_add_options_page')) {
+
+            // Register options page.
+            $option_page = acf_add_options_page([
+                'page_title' => __('Theme General Settings'),
+                'menu_title' => __('Theme Settings'),
+                'menu_slug' => 'theme-general-settings',
+                'capability' => 'edit_posts',
+                'redirect' => false
+            ]);
+        }
     }
 }

@@ -20,7 +20,7 @@ get_header(); ?>
 									</div>
 								<?php endif; ?>
 								<div class="entry__share">
-									<?php show_template( 'share-links' ); ?>
+									<?php get_template_part('parts', 'share-link'); ?>
 								</div>
 								<p class="entry__meta"><?php echo sprintf( __( 'Written by %s on %s', 'default' ), get_the_author_posts_link(), get_the_time( get_option( 'date_format' ) ) ); ?></p>
 								<div class="entry__content clearfix gb-content">
