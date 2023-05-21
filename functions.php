@@ -2,8 +2,8 @@
 
 namespace SleepyOwl;
 
-use App\Components\BaseComponent;
-use SleepyOwl\App\functions\Helpers;
+
+use SleepyOwl\App\App;
 
 /**
  * Classes autoloader. For current work folder structure should be same as namespaces. for example
@@ -38,7 +38,7 @@ function my_custom_autoloader($class_name): void
     });
     $path = implode(DIRECTORY_SEPARATOR, $path);
 
-    $full_path = get_stylesheet_directory() . DIRECTORY_SEPARATOR . $path . DIRECTORY_SEPARATOR . $file_name;
+    $full_path = get_stylesheet_directory() . DIRECTORY_SEPARATOR . strtolower($path) . DIRECTORY_SEPARATOR . $file_name;
     if (file_exists($full_path)) {
         require_once $full_path;
     }
@@ -46,3 +46,6 @@ function my_custom_autoloader($class_name): void
 
 // add a new autoloader by passing a callable into spl_autoload_register()
 spl_autoload_register('SleepyOwl\my_custom_autoloader');
+
+
+App::get_instance();

@@ -33,6 +33,7 @@ mix
             chunkFilename: mix.inProduction() ? path.relative(__dirname, path.join('dist', 'chunks', '[name].js')) : path.relative(__dirname, path.join('temp', '[name].js')),
             publicPath: mix.inProduction() ? path.join(path.sep, 'wp-content', 'themes', themeConfig.themeName) + path.sep : 'auto'
         },
+        devtool: mix.inProduction() ? false : 'inline-source-map'
     })
     .browserSync({
             proxy: themeConfig.siteUrl.toString(),

@@ -2,8 +2,9 @@
 
 namespace SleepyOwl\App;
 
-use App\base\Singleton;
+use App\Base\Singleton;
 use App\Functions\ThemeImages;
+use App\Setup\CustomFormats;
 use App\Setup\ThemeScriptStyles;
 use App\Setup\ThemeSetup;
 

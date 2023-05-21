@@ -1,6 +1,6 @@
 <?php
 
-namespace App\base;
+namespace App\Base;
 
 abstract class Singleton
 {
@@ -11,10 +11,10 @@ abstract class Singleton
 
     protected static array $_instance = [];
 
-    public static function get_instance(): Singleton
+    public static function get_instance()
     {
         $class = static::class;
-        if (!self::$_instance[$class]) {
+        if (!isset(self::$_instance[$class])) {
             self::$_instance[$class] = new static();
         }
 
